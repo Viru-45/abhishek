@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b17">
+  <title>A message for Abhishek</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, sans-serif;
+      background: #101b17;
+      color: #f4f2e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    main {
+      width: min(100%, 760px);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 32px;
+      font-size: clamp(2.6rem, 10vw, 6.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    button {
+      min-height: 54px;
+      padding: 14px 24px;
+      border: 0;
+      border-radius: 999px;
+      background: #d4f36a;
+      color: #101b17;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 140ms ease, background-color 180ms ease;
+    }
+
+    button:hover {
+      background: #e2ff8b;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    button:focus-visible {
+      outline: 3px solid #f4f2e8;
+      outline-offset: 5px;
+    }
+
+    #reveal {
+      margin: 28px 0 0;
+      color: #d4f36a;
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      font-weight: 750;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    #reveal[hidden] {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hi chutiya Abhishek</h1>
+    <button id="reveal-button" type="button" aria-controls="reveal" aria-expanded="false">
+      Check
+    </button>
+    <p id="reveal" aria-live="polite" hidden>Maha chutiya Abhishek or call project idea ka</p>
+  </main>
+  <script>
+    const button = document.querySelector("#reveal-button");
+    const message = document.querySelector("#reveal");
+
+    button.addEventListener("click", () => {
+      message.hidden = !message.hidden;
+      button.setAttribute("aria-expanded", String(!message.hidden));
+      button.textContent = message.hidden ? "Check" : "Hahaaa";
+    });
+  </script>
+</body>
+</html>
